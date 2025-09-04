@@ -1,9 +1,12 @@
 "use client";
 import {
   Calendar,
+  ChevronDown,
   ChevronUp,
   Home,
   Inbox,
+  Plus,
+  Projector,
   Search,
   Settings,
   User,
@@ -15,10 +18,12 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
+  SidebarGroupAction,
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
+  SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSubButton,
@@ -33,6 +38,11 @@ import {
   DropdownMenuItem,
 } from "./ui/dropdown-menu";
 import { Separator } from "./ui/separator";
+import { Collapsible } from "./ui/collapsible";
+import {
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@radix-ui/react-collapsible";
 
 // Menu items.
 const items = [
@@ -66,7 +76,8 @@ const items = [
 export function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader>
+      {/* HEADER */}
+      <SidebarHeader className="py-4">
         <SidebarMenuItem>
           <SidebarMenuButton asChild>
             <Link href="/">
@@ -77,6 +88,7 @@ export function AppSidebar() {
         </SidebarMenuItem>
       </SidebarHeader>
       <Separator />
+      {/* MAIN CONTENT CTA'S */}
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>
@@ -90,13 +102,77 @@ export function AppSidebar() {
                       <span>{item.title}</span>
                     </a>
                   </SidebarMenuButton>
+                  {/* {item.title === "Inbox" && (
+                    <SidebarMenuBadge>21</SidebarMenuBadge>
+                  )} */}
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+        {/* ADD PROJECT */}
+        <SidebarGroup>
+          <SidebarGroupLabel>Projects</SidebarGroupLabel>
+          <SidebarGroupAction>
+            <Plus /> <span className="sr-only">Add Project</span>
+          </SidebarGroupAction>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href="/#">
+                    <Projector />
+                    See All Projects
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href="/#">
+                    <Plus />
+                    Add Project
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        {/* COLLAPSIBLE */}
+        <Collapsible defaultOpen className="group/collapsible">
+          <SidebarGroup>
+            <SidebarGroupLabel asChild>
+              <CollapsibleTrigger>
+                Projects
+                <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
+              </CollapsibleTrigger>
+            </SidebarGroupLabel>
+            <CollapsibleContent>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton asChild>
+                      <Link href="/#">
+                        <Projector />
+                        See All Projects
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton asChild>
+                      <Link href="/#">
+                        <Plus />
+                        Add Project
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </CollapsibleContent>
+          </SidebarGroup>
+        </Collapsible>
       </SidebarContent>
-      <SidebarSeparator />
+      <Separator />
+      {/* FOOTER */}
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
