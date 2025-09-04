@@ -1,9 +1,19 @@
 "use client";
-import { Calendar, Home, Inbox, Link, Search, Settings } from "lucide-react"
-
+import {
+  Calendar,
+  ChevronUp,
+  Home,
+  Inbox,
+  Search,
+  Settings,
+  User,
+  User2,
+} from "lucide-react";
+import Globe from "@/public/globe.svg";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -11,9 +21,18 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
-import Image from "next/image"
-
+  SidebarMenuSubButton,
+  SidebarSeparator,
+} from "@/components/ui/sidebar";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  DropdownMenuTrigger,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "./ui/dropdown-menu";
+import { Separator } from "./ui/separator";
 
 // Menu items.
 const items = [
@@ -42,23 +61,22 @@ const items = [
     url: "#",
     icon: Settings,
   },
-]
+];
 
 export function AppSidebar() {
   return (
-    <Sidebar>
+    <Sidebar collapsible="icon">
       <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <Link href="/">
-              <Image src="/logo.png" alt="Logo" width={32} height={32} />
+        <SidebarMenuItem>
+          <SidebarMenuButton asChild>
+            <Link href="/">
+              <Image src={Globe} alt="Logo" width={18} height={18} />
               <span>LLM Analytics</span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
+            </Link>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
       </SidebarHeader>
+      <Separator />
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>
@@ -78,6 +96,25 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarSeparator />
+      <SidebarFooter>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <SidebarMenuButton>
+                  <User2 /> Nicka Devashvili <ChevronUp className="ml-auto" />
+                </SidebarMenuButton>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem>Account</DropdownMenuItem>
+                <DropdownMenuItem>Settings</DropdownMenuItem>
+                <DropdownMenuItem>Sign out</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
     </Sidebar>
-  )
+  );
 }
