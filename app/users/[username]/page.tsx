@@ -1,4 +1,5 @@
 import CardList from "@/components/CardList";
+import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -7,6 +8,13 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+import { Progress } from "@/components/ui/progress";
+import { BadgeCheck, Citrus } from "lucide-react";
 
 export default function SingleUserPage() {
   return (
@@ -31,10 +39,73 @@ export default function SingleUserPage() {
         {/* LEFT */}
         <div className="w-full xl:w-1/3 space-y-6">
           {/* USER BADGES CONTAINTER */}
-          <div className="bg-primary-foreground p-4 rounded-lg">Badge</div>
+          <div className="bg-primary-foreground p-4 rounded-lg">
+            <h1 className="text-xl font-semibold">User Badges</h1>
+            <div className="flex gap-4 mt-4">
+              <HoverCard>
+                <HoverCardTrigger>
+                  <BadgeCheck
+                    size={36}
+                    className="rounded-full p-2 bg-blue-500/30 border-1 border-blue-500/50"
+                  />
+                </HoverCardTrigger>
+                <HoverCardContent>
+                  <h1 className="font-bold mb-2">Verified User</h1>
+                  <p className="text-sm text-muted-foreground">
+                    This user has been verified by our platform
+                  </p>
+                </HoverCardContent>
+              </HoverCard>
+              <HoverCard>
+                <HoverCardTrigger>
+                  <Citrus
+                    size={36}
+                    className="rounded-full p-2 bg-orange-500/30 border-1 border-orange-500/50"
+                  />
+                </HoverCardTrigger>
+                <HoverCardContent>
+                  <h1 className="font-bold mb-2">Verified User</h1>
+                  <p className="text-sm text-muted-foreground">
+                    This user has been verified by our platform
+                  </p>
+                </HoverCardContent>
+              </HoverCard>
+            </div>
+          </div>
           {/* INFORMATION CONTAINTER */}
           <div className="bg-primary-foreground p-4 rounded-lg">
-            Information
+            <h1 className="text-xl font-semibold">User Information</h1>
+            <div className="space-y-3 mt-4">
+              <div className="flex flex-col gap-2 mb-8">
+                <p className="text-sm text-muted-foreground">
+                  Profile Completion
+                </p>
+                <Progress value={33} />
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="font-bold">Username:</span>
+                <span>Nick Devashvili</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="font-bold">Email:</span>
+                <span>nikadevashvili@gmail.com</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="font-bold">Phone Number:</span>
+                <span>+995593337777</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="font-bold">Location:</span>
+                <span>San Francisco, CA</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="font-bold">Role:</span>
+                <Badge>Admin</Badge>
+              </div>
+              <p className="text-sm text-muted-foreground mt-5">
+                Joined on 2025.01.01
+              </p>
+            </div>
           </div>
           {/* CARD LIST CONTAINTER */}
           <div className="bg-primary-foreground p-4 rounded-lg">
