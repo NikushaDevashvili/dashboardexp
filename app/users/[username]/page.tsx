@@ -18,6 +18,7 @@ import { BadgeCheck, Citrus } from "lucide-react";
 import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import EditUser from "@/components/EditUser";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function SingleUserPage() {
   return (
@@ -126,7 +127,19 @@ export default function SingleUserPage() {
         {/* RIGHT */}
         <div className="w-full xl:w-2/3 space-y-6">
           {/* USER CARD CONTAINER */}
-          <div className="bg-primary-foreground p-4 rounded-lg">User Card</div>
+          <div className="bg-primary-foreground p-4 rounded-lg space-y-2">
+            <div className="flex items-center gap-2">
+              <Avatar>
+                <AvatarImage src="https://avatars.githubusercontent.com/u/1486366" />
+                <AvatarFallback>ND</AvatarFallback>
+              </Avatar>
+              <h1 className="text-xl font-semibold">Nick Devashvili</h1>
+            </div>
+            <p className="text-small text-muted-foreground">
+              Nick Devashvili works on the analytical platform for LLM
+              applications
+            </p>
+          </div>
           {/* CHART CONTAINER */}
           <div className="bg-primary-foreground p-4 rounded-lg">Chart</div>
         </div>
