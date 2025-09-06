@@ -15,15 +15,9 @@ import {
 } from "@/components/ui/hover-card";
 import { Progress } from "@/components/ui/progress";
 import { BadgeCheck, Citrus } from "lucide-react";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import EditUser from "@/components/EditUser";
 
 export default function SingleUserPage() {
   return (
@@ -89,15 +83,7 @@ export default function SingleUserPage() {
                 <SheetTrigger asChild>
                   <Button>Edit Profile</Button>
                 </SheetTrigger>
-                <SheetContent>
-                  <SheetHeader>
-                    <SheetTitle>Are you absolutely sure?</SheetTitle>
-                    <SheetDescription>
-                      This action cannot be undone. This will permanently delete
-                      your account and remove your data from our servers.
-                    </SheetDescription>
-                  </SheetHeader>
-                </SheetContent>
+                <EditUser />
               </Sheet>
             </div>
             <div className="space-y-3 mt-4">
