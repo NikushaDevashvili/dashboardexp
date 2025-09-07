@@ -115,7 +115,7 @@ export default function SingleUserPage() {
                 <Badge>Admin</Badge>
               </div>
               <p className="text-sm text-muted-foreground mt-5">
-                Joined on 2025.01.01
+                Joined on 2025.01.01ß
               </p>
             </div>
           </div>
