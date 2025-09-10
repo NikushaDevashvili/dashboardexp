@@ -5,12 +5,15 @@ import {
   ChevronUp,
   Home,
   Inbox,
+  OctagonAlert,
   Plus,
   Projector,
   Search,
   Settings,
   User,
   User2,
+  UserSquare2,
+  Zap,
 } from "lucide-react";
 import Globe from "@/public/globe.svg";
 import {
@@ -52,19 +55,19 @@ const items = [
     icon: Home,
   },
   {
-    title: "Inbox",
+    title: "Events",
     url: "#",
-    icon: Inbox,
+    icon: Zap,
   },
   {
-    title: "Calendar",
+    title: "Failures",
     url: "#",
-    icon: Calendar,
+    icon: OctagonAlert,
   },
   {
-    title: "Search",
+    title: "Users",
     url: "#",
-    icon: Search,
+    icon: UserSquare2,
   },
   {
     title: "Settings",
@@ -137,8 +140,59 @@ export function AppSidebar() {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+        {/* ADD PROJECT */}
+        <SidebarGroup>
+          <SidebarGroupLabel>Monitors</SidebarGroupLabel>
+          <SidebarGroupAction>
+            <Plus /> <span className="sr-only">Add Project</span>
+          </SidebarGroupAction>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href="/#">
+                    <div className="bg-green-600 rounded-4xl w-2 h-2" />
+                    Sales Metrics Tracker
+                  </Link>
+                </SidebarMenuButton>
+                <SidebarMenuButton asChild>
+                  <Link href="/#">
+                    <div className="bg-red-600 rounded-4xl w-2 h-2" />
+                    Cost Tracker
+                  </Link>
+                </SidebarMenuButton>
+                <SidebarMenuButton asChild>
+                  <Link href="/#">
+                    <div className="bg-red-600 rounded-4xl w-2 h-2" />
+                    Hallucination Monitor
+                  </Link>
+                </SidebarMenuButton>
+                <SidebarMenuButton asChild>
+                  <Link href="/#">
+                    <div className="bg-yellow-600 rounded-4xl w-2 h-2" />
+                    Uptime Tracker
+                  </Link>
+                </SidebarMenuButton>
+                <SidebarMenuButton asChild>
+                  <Link href="/#">
+                    <div className="bg-green-600 rounded-4xl w-2 h-2" />
+                    Answer Relevancy Tracker
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href="/#">
+                    <Plus />
+                    Add new tracker
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
         {/* COLLAPSIBLE */}
-        <Collapsible defaultOpen className="group/collapsible">
+        {/* <Collapsible defaultOpen className="group/collapsible">
           <SidebarGroup>
             <SidebarGroupLabel asChild>
               <CollapsibleTrigger>
@@ -171,7 +225,8 @@ export function AppSidebar() {
           </SidebarGroup>
         </Collapsible>
       </SidebarContent>
-      <Separator />
+      <Separator /> */}
+      </SidebarContent>
       {/* FOOTER */}
       <SidebarFooter>
         <SidebarMenu>
