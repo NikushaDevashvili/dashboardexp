@@ -1,6 +1,7 @@
+"use client";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Anchor, Monitor, MonitorCogIcon } from "lucide-react";
+import { Anchor, ChevronDown, Monitor, MonitorCogIcon } from "lucide-react";
 import { AppBarChart } from "@/components/AppBarChart";
 import CardList from "@/components/CardList";
 import TodoList from "@/components/TodoList";
@@ -11,6 +12,17 @@ import {
 } from "@/components/ui/tooltip";
 import { Badge } from "@/components/ui/badge";
 import StatisticCard13 from "@/components/statistic-card-13";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import React from "react";
 
 // function StatisticCard({ subtitle, title }) {
 //   return (
@@ -24,11 +36,56 @@ import StatisticCard13 from "@/components/statistic-card-13";
 // }
 
 export default function Home() {
+  const [position, setPosition] = React.useState("developermode");
+
+  // Maps dropdown values to display names
+  const getDisplayName = (value: string) => {
+    const names = {
+      developermode: "Developer Mode",
+      productmode: "Product Mode",
+      uxmode: "UX mode",
+    };
+    return names[value as keyof typeof names] || "Developer Mode";
+  };
+
   return (
     <>
-      <div className="p-4">
-        <h1 className="text-xl">OpenStatus API</h1>
-        <p className="text-gray-500 pt-">https://api.openstatus.dev</p>
+      <div className="flex flex-row justify-between items-center">
+        <div className="p-4">
+          <h1 className="text-xl">OpenStatus API</h1>
+          <p className="text-gray-500 pt-">https://api.openstatus.dev</p>
+        </div>
+        <div>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline">
+                {getDisplayName(position)}
+                <ChevronDown />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-64" align="end">
+              <DropdownMenuLabel>Change Data Display Mode</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuRadioGroup
+                value={position}
+                onValueChange={setPosition}
+              >
+                <DropdownMenuRadioItem
+                  value="developermode"
+                  defaultChecked={true}
+                >
+                  Developer Mode
+                </DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value="productmode">
+                  Product Mode
+                </DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value="uxmode">
+                  UX mode
+                </DropdownMenuRadioItem>
+              </DropdownMenuRadioGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
       {/* <div className="flex flex-row items-center pt-6 pb-2">
         <Badge className="h-3 min-w-3 rounded-full px-1 font-mono tabular-nums bg-orange-700"></Badge>
