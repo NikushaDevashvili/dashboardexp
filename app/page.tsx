@@ -1,15 +1,23 @@
 "use client";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Anchor, ChevronDown, Monitor, MonitorCogIcon } from "lucide-react";
+import {
+  Activity,
+  Anchor,
+  BatteryMedium,
+  BookCheck,
+  ChevronDown,
+  Monitor,
+  MonitorCogIcon,
+  Server,
+  Shredder,
+  SquarePercent,
+  Timer,
+  Zap,
+} from "lucide-react";
 import { AppBarChart } from "@/components/AppBarChart";
 import CardList from "@/components/CardList";
 import TodoList from "@/components/TodoList";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { Badge } from "@/components/ui/badge";
 import StatisticCard13 from "@/components/statistic-card-13";
 import {
@@ -23,6 +31,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import React from "react";
+import StatisticCard from "@/components/StatisticsCard";
 
 // function StatisticCard({ subtitle, title }) {
 //   return (
@@ -92,66 +101,76 @@ export default function Home() {
         <h1 className="pl-2">Technical & System Performance</h1>
       </div> */}
       <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4">
-        <div className=" p-6  border-1 border-r-0 flex flex-row items-center justify-between">
-          <Tooltip>
-            <TooltipTrigger className="flex flex-col items-start">
-              <h1 className="pb-1">Latency (ms)</h1>
-              <span className="text-xl">120</span>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>Average time to start processing a request</p>
-            </TooltipContent>
-          </Tooltip>
-          <div className="border-1 p-4">
-            <MonitorCogIcon />
-          </div>
-        </div>
-        <div className=" p-6  border-1 border-r-0 flex flex-row items-center justify-between">
+        <StatisticCard
+          title="Latency (ms)"
+          value="120"
+          tooltip="Average time to start processing a request"
+          icon={<Zap />}
+        />
+        <StatisticCard
+          title="TTFT (ms)"
+          value="95"
+          tooltip="time until first token returned"
+          icon={<Timer />}
+        />
+        <StatisticCard
+          title="Uptime & Availability"
+          value="99.95%"
+          tooltip="time until first token returned"
+          icon={<Activity />}
+        />
+        <StatisticCard
+          title="Cost Per Request"
+          value="$0.004"
+          tooltip="Average Request Cost"
+          icon={<SquarePercent />}
+        />
+        <StatisticCard
+          title="Completeness"
+          value="95%"
+          tooltip="Responses fully address the query"
+          icon={<BookCheck />}
+        />
+        <StatisticCard
+          title="Context Retention"
+          value="85%"
+          tooltip="Multi tool conversation memory"
+          icon={<BatteryMedium />}
+        />
+        <StatisticCard
+          title="Hallucination Rate"
+          value="3%"
+          tooltip="Fabricated or incorrect info"
+          icon={<Shredder />}
+        />
+        <StatisticCard
+          title="5xx Errors"
+          value="0.8%"
+          tooltip="Server errors detected"
+          icon={<Server />}
+        />
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4">
+        <div className=" p-6 col-span-2 border-1  items-center flex flex-row justify-between">
           <div className="">
-            <Tooltip>
-              <TooltipTrigger className="flex flex-col items-start">
-                <h1 className="pb-1">TTFT (ms)</h1>
-                <span className="text-xl">95</span>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>time until first token returned</p>
-              </TooltipContent>
-            </Tooltip>
-          </div>
-          <div className="border-1 p-4">
-            <MonitorCogIcon />
-          </div>
-        </div>
-        <div className=" p-6  border-1 border-r-0 flex flex-row items-center justify-between">
-          <div className="">
-            <Tooltip>
-              <TooltipTrigger className="flex flex-col items-start">
-                <h1 className="pb-1">Uptime & Availability</h1>
-                <span className="text-xl">99.95%</span>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>time until first token returned</p>
-              </TooltipContent>
-            </Tooltip>
-          </div>
-          <div className="border-1 p-4">
-            <MonitorCogIcon />
-          </div>
-        </div>
-        <div className=" p-6 border-1  items-center flex flex-row justify-between">
-          <div className="">
-            <Tooltip>
-              <TooltipTrigger className="flex flex-col items-start">
-                <h1 className="pb-1">Cost Per Request</h1>
-                <span className="text-xl">$0.004</span>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Average Request Cost</p>
-              </TooltipContent>
-            </Tooltip>
-          </div>
-          <div className="border-1 p-4">
-            <MonitorCogIcon />
+            <span className="text-xl">Uptime</span>
+            <div className="flex flex-row gap-8 justify-between">
+              <h1 className="pb-1">Uptime across all the regions</h1>
+              <div className="flex flex-row gap-2">
+                <Badge className="bg-green-100 rounded-none">
+                  <p className=" text-green-700">Ok</p>
+                </Badge>
+                <Badge className="bg-yellow-100 rounded-none">
+                  <p className="text-yellow-700">Error</p>
+                </Badge>
+                <Badge className="bg-red-100 rounded-none">
+                  <p className="text-red-700">Degraded</p>
+                </Badge>
+              </div>
+            </div>
+            <div className="py-4">
+              <StatisticCard13 />
+            </div>
           </div>
         </div>
         <div className=" p-6 col-span-2 border-1  items-center flex flex-row justify-between">
