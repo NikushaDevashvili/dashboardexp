@@ -104,12 +104,14 @@ export default function Home() {
               <h1 className="pb-1">Uptime across all the regions</h1>
               <div className="flex flex-row gap-2">
                 <Badge className="bg-green-100 rounded-none">
-                  <p className=" text-green-500">OK</p>
+                  <p className=" text-green-700">Ok</p>
                 </Badge>
-                <Badge className="bg-green-100 rounded-none">
-                  <p className="text-green-500">OK</p>
+                <Badge className="bg-yellow-100 rounded-none">
+                  <p className="text-yellow-700">Error</p>
                 </Badge>
-                <Badge className="bg-green-600 rounded-none">hey</Badge>
+                <Badge className="bg-red-100 rounded-none">
+                  <p className="text-red-700">Degraded</p>
+                </Badge>
               </div>
             </div>
             <div className="py-4">
