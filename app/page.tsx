@@ -460,14 +460,14 @@ export default function Home() {
         </div>
       </div>
       <div className="py-6">
-        <h1 className="font-semibold py-6">All System Alerts</h1>
-        <ScrollArea className="h-200 w-auto rounded-md border">
+        <h1 className="font-semibold py-6 px-6">All System Alerts</h1>
+        <div className="rounded-none border">
           {/* <div className="mb-8 px-4 py-2 bg-secondary rounded-md">
             <h1 className="font-semibold">All System Alerts</h1>
           </div> */}
           {/* <DataTable columns={columns} data={data} /> */}
           <TableData />
-        </ScrollArea>
+        </div>
       </div>
     </>
   );

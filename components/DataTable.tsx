@@ -141,7 +141,7 @@ const columns: ColumnDef<Issue>[] = [
     header: "Type",
     cell: ({ row }) => (
       <Badge variant={"outline"}>
-        <div className="font-medium">{row.getValue("type")}</div>
+        <div className="font-semibold text-sm">{row.getValue("type")}</div>
       </Badge>
     ),
   },
@@ -154,11 +154,11 @@ const columns: ColumnDef<Issue>[] = [
         <Badge
           className={
             status === "low"
-              ? "bg-green-700"
+              ? "bg-green-700 dark:text-white"
               : status === "medium"
-              ? "bg-yellow-600"
+              ? "bg-yellow-600 dark:text-white"
               : status === "critical"
-              ? "bg-red-700"
+              ? "bg-red-700 dark:text-white"
               : "bg-gray-50"
           }
         >
@@ -255,11 +255,11 @@ export default function TableData() {
           onChange={(event) =>
             table.getColumn("type")?.setFilterValue(event.target.value)
           }
-          className="max-w-sm"
+          className="max-w-sm rounded-none"
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
+            <Button variant="outline rounded-none" className="ml-auto">
               Columns <ChevronDown className="ml-2 h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
@@ -285,7 +285,7 @@ export default function TableData() {
         </DropdownMenu>
       </div>
 
-      <div className="rounded-md border">
+      <div className="rounded-none border">
         <ScrollArea className="w-auto h-156">
           <Table>
             <TableHeader className="sticky top-0 z-10 bg-secondary">
