@@ -32,9 +32,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import React from "react";
 import StatisticCard from "@/components/StatisticsCard";
-import { columns, Payment } from "./payments/columns";
-import { DataTable } from "./payments/data-table";
+import { columns, Payment } from "./issues/columns";
+import { DataTable } from "./issues/data-table";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import TableData from "@/components/DataTable";
 
 // function StatisticCard({ subtitle, title }) {
 //   return (
@@ -464,7 +465,8 @@ export default function Home() {
           {/* <div className="mb-8 px-4 py-2 bg-secondary rounded-md">
             <h1 className="font-semibold">All System Alerts</h1>
           </div> */}
-          <DataTable columns={columns} data={data} />
+          {/* <DataTable columns={columns} data={data} /> */}
+          <TableData />
         </ScrollArea>
       </div>
     </>
