@@ -39,155 +39,127 @@ import {
   ChevronLeft,
   ChevronRight,
   MoreHorizontal,
+  User,
 } from "lucide-react";
-type Payment = {
-  id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
-  email: string;
+import { ScrollArea } from "./ui/scroll-area";
+type Issue = {
+  type: string;
+  level: "low" | "medium" | "critical";
+  time: string;
+  users: string;
 };
-const data: Payment[] = [
-  { id: "m5gr84i9", amount: 316, status: "success", email: "ken99@yahoo.com" },
-  { id: "3u1reuv4", amount: 242, status: "success", email: "Abe45@gmail.com" },
+const data: Issue[] = [
   {
-    id: "derv1ws0",
-    amount: 837,
-    status: "processing",
-    email: "Monserrat44@gmail.com",
+    type: "overspend",
+    level: "critical",
+    time: "14/9/2025 - 3:18 PM",
+    users: "8.72%",
   },
   {
-    id: "5kma53ae",
-    amount: 874,
-    status: "success",
-    email: "Silas22@gmail.com",
+    type: "latency_spike",
+    level: "medium",
+    time: "14/9/2025 - 2:55 PM",
+    users: "12.31%",
   },
   {
-    id: "bhqecj4p",
-    amount: 721,
-    status: "failed",
-    email: "carmella@hotmail.com",
+    type: "provider_outage",
+    level: "critical",
+    time: "14/9/2025 - 2:40 PM",
+    users: "100%",
   },
   {
-    id: "bhqecj4p",
-    amount: 721,
-    status: "failed",
-    email: "carmella@hotmail.com",
+    type: "token_spike",
+    level: "low",
+    time: "14/9/2025 - 2:22 PM",
+    users: "4.15%",
   },
   {
-    id: "bhqecj4p",
-    amount: 721,
-    status: "failed",
-    email: "carmella@hotmail.com",
+    type: "high_error_rate",
+    level: "critical",
+    time: "14/9/2025 - 1:59 PM",
+    users: "23.48%",
   },
   {
-    id: "bhqecj4p",
-    amount: 721,
-    status: "failed",
-    email: "carmella@hotmail.com",
+    type: "rate_limit_hit",
+    level: "medium",
+    time: "14/9/2025 - 1:41 PM",
+    users: "6.02%",
   },
   {
-    id: "bhqecj4p",
-    amount: 721,
-    status: "failed",
-    email: "carmella@hotmail.com",
+    type: "output_flood",
+    level: "low",
+    time: "14/9/2025 - 1:20 PM",
+    users: "3.87%",
   },
   {
-    id: "bhqecj4p",
-    amount: 721,
-    status: "failed",
-    email: "carmella@hotmail.com",
+    type: "cache_miss",
+    level: "medium",
+    time: "14/9/2025 - 12:58 PM",
+    users: "9.76%",
   },
   {
-    id: "bhqecj4p",
-    amount: 721,
-    status: "failed",
-    email: "carmella@hotmail.com",
+    type: "inefficient_model",
+    level: "low",
+    time: "14/9/2025 - 12:34 PM",
+    users: "2.11%",
   },
   {
-    id: "bhqecj4p",
-    amount: 721,
-    status: "failed",
-    email: "carmella@hotmail.com",
+    type: "timeouts",
+    level: "critical",
+    time: "14/9/2025 - 12:05 PM",
+    users: "15.64%",
   },
   {
-    id: "bhqecj4p",
-    amount: 721,
-    status: "failed",
-    email: "carmella@hotmail.com",
+    type: "output_flood",
+    level: "low",
+    time: "14/9/2025 - 1:20 PM",
+    users: "3.87%",
   },
   {
-    id: "bhqecj4p",
-    amount: 721,
-    status: "failed",
-    email: "carmella@hotmail.com",
+    type: "cache_miss",
+    level: "medium",
+    time: "14/9/2025 - 12:58 PM",
+    users: "9.76%",
   },
   {
-    id: "bhqecj4p",
-    amount: 721,
-    status: "failed",
-    email: "carmella@hotmail.com",
+    type: "inefficient_model",
+    level: "low",
+    time: "14/9/2025 - 12:34 PM",
+    users: "2.11%",
   },
   {
-    id: "bhqecj4p",
-    amount: 721,
-    status: "failed",
-    email: "carmella@hotmail.com",
-  },
-  {
-    id: "bhqecj4p",
-    amount: 721,
-    status: "failed",
-    email: "carmella@hotmail.com",
-  },
-  {
-    id: "bhqecj4p",
-    amount: 721,
-    status: "failed",
-    email: "carmella@hotmail.com",
-  },
-  {
-    id: "bhqecj4p",
-    amount: 721,
-    status: "failed",
-    email: "carmella@hotmail.com",
+    type: "timeouts",
+    level: "critical",
+    time: "14/9/2025 - 12:05 PM",
+    users: "15.64%",
   },
 ];
-const columns: ColumnDef<Payment>[] = [
+
+const columns: ColumnDef<Issue>[] = [
   {
-    accessorKey: "id",
-    header: "Transaction",
-    cell: ({ row }) => <div className="font-medium">{row.getValue("id")}</div>,
+    accessorKey: "type",
+    header: "Type",
+    cell: ({ row }) => (
+      <Badge variant={"outline"}>
+        <div className="font-medium">{row.getValue("type")}</div>
+      </Badge>
+    ),
   },
   {
-    accessorKey: "email",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Email
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
-  },
-  {
-    accessorKey: "status",
-    header: "Status",
+    accessorKey: "level",
+    header: "Level",
     cell: ({ row }) => {
-      const status = row.getValue("status") as string;
+      const status = row.getValue("level") as string;
       return (
         <Badge
-          variant={
-            status === "success"
-              ? "default"
-              : status === "processing"
-              ? "secondary"
-              : status === "pending"
-              ? "outline"
-              : "destructive"
+          className={
+            status === "low"
+              ? "bg-green-700"
+              : status === "medium"
+              ? "bg-yellow-600"
+              : status === "critical"
+              ? "bg-red-700"
+              : "bg-gray-50"
           }
         >
           {status}
@@ -196,29 +168,29 @@ const columns: ColumnDef<Payment>[] = [
     },
   },
   {
-    accessorKey: "amount",
+    accessorKey: "time",
     header: ({ column }) => {
       return (
-        <div className="text-right">
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            Amount
-            <ArrowUpDown className="ml-2 h-4 w-4" />
-          </Button>
-        </div>
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Time
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
       );
     },
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"));
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(amount);
-
-      return <div className="text-right font-medium">{formatted}</div>;
-    },
+    cell: ({ row }) => <div className="lowercase">{row.getValue("time")}</div>,
+  },
+  {
+    accessorKey: "users",
+    header: "Affected Users",
+    cell: ({ row }) => (
+      <div className="flex flex-row items-center space-x-1">
+        <User className="w-4" />
+        <div className="font-medium">{row.getValue("users")}</div>
+      </div>
+    ),
   },
   {
     id: "actions",
@@ -275,13 +247,13 @@ export default function TableData() {
     },
   });
   return (
-    <div className="w-full max-w-4xl mx-auto p-6">
+    <div className="w-full  mx-auto p-6">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+          placeholder="Filter issues (e.g: overspend, latency)"
+          value={(table.getColumn("type")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
+            table.getColumn("type")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
@@ -312,56 +284,60 @@ export default function TableData() {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
+
       <div className="rounded-md border">
-        <Table>
-          <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableHead key={header.id}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                    </TableHead>
-                  );
-                })}
-              </TableRow>
-            ))}
-          </TableHeader>
-          <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </TableCell>
-                  ))}
+        <ScrollArea className="w-auto h-156">
+          <Table>
+            <TableHeader className="sticky top-0 z-10 bg-secondary">
+              {table.getHeaderGroups().map((headerGroup) => (
+                <TableRow key={headerGroup.id}>
+                  {headerGroup.headers.map((header) => {
+                    return (
+                      <TableHead key={header.id}>
+                        {header.isPlaceholder
+                          ? null
+                          : flexRender(
+                              header.column.columnDef.header,
+                              header.getContext()
+                            )}
+                      </TableHead>
+                    );
+                  })}
                 </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className="h-24 text-center"
-                >
-                  No results.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
+              ))}
+            </TableHeader>
+            <TableBody>
+              {table.getRowModel().rows?.length ? (
+                table.getRowModel().rows.map((row) => (
+                  <TableRow
+                    key={row.id}
+                    data-state={row.getIsSelected() && "selected"}
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <TableCell key={cell.id}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell
+                    colSpan={columns.length}
+                    className="h-24 text-center"
+                  >
+                    No results.
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </ScrollArea>
       </div>
+
       <div className="flex items-center justify-between pt-4">
         <div className="text-sm text-muted-foreground">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
