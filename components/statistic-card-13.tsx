@@ -30,7 +30,7 @@ export default function StatisticCard13() {
           <span
             key={i}
             className={cn(
-              `inline-block w-4 h-16 rounded-none transition-colors`,
+              `inline-block w-3 h-20 rounded-none transition-colors`,
               i < passing ? "bg-green-700" : "bg-red-700 "
             )}
           />
