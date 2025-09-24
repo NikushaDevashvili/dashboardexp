@@ -1,0 +1,48 @@
+import type { Event } from "@/data/types";
+
+export const mockEvents: Event[] = [
+  {
+    id: "1",
+    name: "User Login",
+    type: "user_action",
+    status: "completed",
+    timestamp: "14/9/2025 - 3:18 PM",
+    duration: "2.3s",
+    userCount: 45,
+    description: "User successfully logged in",
+    metadata: { ip: "192.168.1.1", browser: "Chrome" },
+  },
+  {
+    id: "2",
+    name: "Database Query",
+    type: "system_event",
+    status: "active",
+    timestamp: "14/9/2025 - 3:15 PM",
+    duration: "150ms",
+    userCount: 12,
+    description: "Database query executed",
+    metadata: { query: "SELECT * FROM users", table: "users" },
+  },
+  {
+    id: "3",
+    name: "API Error",
+    type: "error",
+    status: "failed",
+    timestamp: "14/9/2025 - 3:10 PM",
+    duration: "500ms",
+    userCount: 8,
+    description: "API endpoint returned 500 error",
+    metadata: { endpoint: "/api/users", statusCode: 500 },
+  },
+  {
+    id: "4",
+    name: "Performance Check",
+    type: "performance",
+    status: "completed",
+    timestamp: "14/9/2025 - 3:05 PM",
+    duration: "1.2s",
+    userCount: 156,
+    description: "System performance monitoring",
+    metadata: { cpu: "45%", memory: "2.1GB" },
+  },
+];
