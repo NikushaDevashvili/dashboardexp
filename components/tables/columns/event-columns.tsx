@@ -1,3 +1,4 @@
+"use client";
 import { ColumnDef } from "@tanstack/react-table";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -63,7 +64,7 @@ export const createEventColumns = ({
               : "bg-green-100 text-green-800"
           }
         >
-          {type.replace("_", " ")}
+          {type}
         </Badge>
       );
     },

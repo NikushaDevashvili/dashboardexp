@@ -56,12 +56,12 @@ const items = [
   },
   {
     title: "Events",
-    url: "#",
+    url: "events",
     icon: Zap,
   },
   {
     title: "Failures",
-    url: "#",
+    url: "failures",
     icon: OctagonAlert,
   },
   {

@@ -1,11 +1,33 @@
+"use client";
 import StatisticCard from "@/components/StatisticsCard";
+import DataTable from "@/components/tables/DataTable";
+import { eventsTableConfig } from "@/lib/table-configs/events-config";
 import {
   MessageSquareTextIcon,
   MousePointerClick,
   UsersIcon,
 } from "lucide-react";
+import { EventActions } from "@/data/types";
+import { createEventColumns } from "@/components/tables/columns/event-columns";
+import { mockEvents } from "@/data/mock/events";
 
 export default function EventsPage() {
+  // Define your actions inside the component
+  const eventActions: EventActions = {
+    onView: (event) => console.log("View event:", event),
+    onExport: (event) => console.log("Export event:", event),
+    onViewLogs: (event) => console.log("View logs for event:", event),
+  };
+
+  // Create the columns inside the component
+  const eventColumns = createEventColumns({ actions: eventActions });
+
+  const handleRowClick = (event: Event) => {
+    console.log("Clicked event:", event);
+    // Navigate to event details, open modal, etc.
+    // router.push(`/events/${event.id}`);
+  };
+
   return (
     <>
       <div className="mx-4">
@@ -30,6 +52,12 @@ export default function EventsPage() {
             icon={<MessageSquareTextIcon />}
           />
         </div>
+        <DataTable
+          {...eventsTableConfig}
+          columns={eventColumns}
+          data={mockEvents}
+          onRowClick={handleRowClick}
+        />
       </div>
     </>
   );

@@ -45,6 +45,7 @@ export interface DataTableProps<TData, TValue> {
   className?: string;
   title?: string;
   description?: string;
+  onRowClick?: (row: TData) => void; // Add this line
 }
 
 export default function DataTable<TData, TValue>({
@@ -61,6 +62,7 @@ export default function DataTable<TData, TValue>({
   className = "",
   title,
   description,
+  onRowClick, // Add this line
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -141,7 +143,7 @@ export default function DataTable<TData, TValue>({
           )}
         </div>
 
-        <div className="rounded-md border">
+        <div className="rounded-none border">
           <ScrollArea className={`w-auto ${height}`}>
             <Table>
               <TableHeader className="sticky top-0 z-10 bg-secondary">
@@ -168,6 +170,10 @@ export default function DataTable<TData, TValue>({
                     <TableRow
                       key={row.id}
                       data-state={row.getIsSelected() && "selected"}
+                      onClick={() => onRowClick?.(row.original)}
+                      className={
+                        onRowClick ? "cursor-pointer hover:bg-muted/50" : ""
+                      }
                     >
                       {row.getVisibleCells().map((cell) => (
                         <TableCell key={cell.id}>
@@ -183,7 +189,7 @@ export default function DataTable<TData, TValue>({
                   <TableRow>
                     <TableCell
                       colSpan={columns.length}
-                      className="h-24 text-center"
+                      className="h-32 text-center"
                     >
                       No results.
                     </TableCell>

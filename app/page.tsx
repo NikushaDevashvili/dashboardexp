@@ -5,7 +5,7 @@ import DataTable from "@/components/tables/DataTable";
 import { createEventColumns } from "@/components/tables/columns/event-columns";
 import { eventsTableConfig } from "@/lib/table-configs/events-config";
 import { mockEvents } from "@/data/mock/events";
-import type { EventActions } from "@/data/types";
+import type { EventActions, IssueActions } from "@/data/types";
 import {
   Activity,
   Anchor,
@@ -39,6 +39,8 @@ import React from "react";
 import StatisticCard from "@/components/StatisticsCard";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { createIssueColumns } from "@/components/tables/columns/issue-columns";
+import { mockIssues } from "./data/mock/issues";
 
 // function StatisticCard({ subtitle, title }) {
 //   return (
@@ -55,14 +57,14 @@ export default function Home() {
   const [position, setPosition] = React.useState("developermode");
 
   // Define your actions
-  const eventActions: EventActions = {
+  const issueActions: IssueActions = {
     onView: (event) => console.log("View event:", event),
     onExport: (event) => console.log("Export event:", event),
     onViewLogs: (event) => console.log("View logs for event:", event),
   };
 
   // Create the columns
-  const eventColumns = createEventColumns({ actions: eventActions });
+  const issueColumns = createIssueColumns({ actions: issueActions });
 
   // Maps dropdown values to display names
   const getDisplayName = (value: string) => {
@@ -223,8 +225,8 @@ export default function Home() {
             {/* <DataTable columns={columns} data={data} /> */}
             <DataTable
               {...eventsTableConfig}
-              columns={eventColumns}
-              data={mockEvents}
+              columns={issueColumns}
+              data={mockIssues}
             />
           </div>
         </div>
