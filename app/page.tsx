@@ -322,151 +322,153 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex flex-row justify-between items-center">
-        <div className="p-4">
-          <h1 className="text-xl">OpenStatus API</h1>
-          <p className="text-gray-500 pt-">https://api.openstatus.dev</p>
-        </div>
-        <div>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline">
-                {getDisplayName(position)}
-                <ChevronDown />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-64" align="end">
-              <DropdownMenuLabel>Change Data Display Mode</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuRadioGroup
-                value={position}
-                onValueChange={setPosition}
-              >
-                <DropdownMenuRadioItem
-                  value="developermode"
-                  defaultChecked={true}
+      <div className="mx-4">
+        <div className="flex flex-row justify-between items-center">
+          <div className="py-4">
+            <h1 className="text-xl">OpenStatus API</h1>
+            <p className="text-gray-500 pt-">https://api.openstatus.dev</p>
+          </div>
+          <div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline">
+                  {getDisplayName(position)}
+                  <ChevronDown />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-64" align="end">
+                <DropdownMenuLabel>Change Data Display Mode</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuRadioGroup
+                  value={position}
+                  onValueChange={setPosition}
                 >
-                  Developer Mode
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="productmode">
-                  Product Mode
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="uxmode">
-                  UX mode
-                </DropdownMenuRadioItem>
-              </DropdownMenuRadioGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
+                  <DropdownMenuRadioItem
+                    value="developermode"
+                    defaultChecked={true}
+                  >
+                    Developer Mode
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="productmode">
+                    Product Mode
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="uxmode">
+                    UX mode
+                  </DropdownMenuRadioItem>
+                </DropdownMenuRadioGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         </div>
-      </div>
-      {/* <div className="flex flex-row items-center pt-6 pb-2">
+        {/* <div className="flex flex-row items-center pt-6 pb-2">
         <Badge className="h-3 min-w-3 rounded-full px-1 font-mono tabular-nums bg-orange-700"></Badge>
         <h1 className="pl-2">Technical & System Performance</h1>
       </div> */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4">
-        <StatisticCard
-          title="Latency (ms)"
-          value="120"
-          tooltip="Average time to start processing a request"
-          icon={<Zap />}
-        />
-        <StatisticCard
-          title="TTFT (ms)"
-          value="95"
-          tooltip="time until first token returned"
-          icon={<Timer />}
-        />
-        <StatisticCard
-          title="Uptime & Availability"
-          value="99.95%"
-          tooltip="time until first token returned"
-          icon={<Activity />}
-        />
-        <StatisticCard
-          title="Cost Per Request"
-          value="$0.004"
-          tooltip="Average Request Cost"
-          icon={<SquarePercent />}
-        />
-        <StatisticCard
-          title="Completeness"
-          value="95%"
-          tooltip="Responses fully address the query"
-          icon={<BookCheck />}
-        />
-        <StatisticCard
-          title="Context Retention"
-          value="85%"
-          tooltip="Multi tool conversation memory"
-          icon={<BatteryMedium />}
-        />
-        <StatisticCard
-          title="Hallucination Rate"
-          value="3%"
-          tooltip="Fabricated or incorrect info"
-          icon={<Shredder />}
-        />
-        <StatisticCard
-          title="5xx Errors"
-          value="0.8%"
-          tooltip="Server errors detected"
-          icon={<Server />}
-        />
-      </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4">
-        <div className=" p-6 col-span-2 border-1  items-center flex flex-row justify-between">
-          <div className="">
-            <span className="text-xl">Uptime</span>
-            <div className="flex flex-row gap-8 justify-between">
-              <h1 className="pb-1">Uptime across all the regions</h1>
-              <div className="flex flex-row gap-2">
-                <Badge className="bg-green-100 rounded-none">
-                  <p className=" text-green-700">Ok</p>
-                </Badge>
-                <Badge className="bg-yellow-100 rounded-none">
-                  <p className="text-yellow-700">Error</p>
-                </Badge>
-                <Badge className="bg-red-100 rounded-none">
-                  <p className="text-red-700">Degraded</p>
-                </Badge>
+        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4">
+          <StatisticCard
+            title="Latency (ms)"
+            value="120"
+            tooltip="Average time to start processing a request"
+            icon={<Zap />}
+          />
+          <StatisticCard
+            title="TTFT (ms)"
+            value="95"
+            tooltip="time until first token returned"
+            icon={<Timer />}
+          />
+          <StatisticCard
+            title="Uptime & Availability"
+            value="99.95%"
+            tooltip="time until first token returned"
+            icon={<Activity />}
+          />
+          <StatisticCard
+            title="Cost Per Request"
+            value="$0.004"
+            tooltip="Average Request Cost"
+            icon={<SquarePercent />}
+          />
+          <StatisticCard
+            title="Completeness"
+            value="95%"
+            tooltip="Responses fully address the query"
+            icon={<BookCheck />}
+          />
+          <StatisticCard
+            title="Context Retention"
+            value="85%"
+            tooltip="Multi tool conversation memory"
+            icon={<BatteryMedium />}
+          />
+          <StatisticCard
+            title="Hallucination Rate"
+            value="3%"
+            tooltip="Fabricated or incorrect info"
+            icon={<Shredder />}
+          />
+          <StatisticCard
+            title="5xx Errors"
+            value="0.8%"
+            tooltip="Server errors detected"
+            icon={<Server />}
+          />
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4">
+          <div className=" p-6 col-span-2 border-1  items-center flex flex-row justify-between">
+            <div className="">
+              <span className="text-xl">Uptime</span>
+              <div className="flex flex-row gap-8 justify-between">
+                <h1 className="pb-1">Uptime across all the regions</h1>
+                <div className="flex flex-row gap-2">
+                  <Badge className="bg-green-100 rounded-none">
+                    <p className=" text-green-700">Ok</p>
+                  </Badge>
+                  <Badge className="bg-yellow-100 rounded-none">
+                    <p className="text-yellow-700">Error</p>
+                  </Badge>
+                  <Badge className="bg-red-100 rounded-none">
+                    <p className="text-red-700">Degraded</p>
+                  </Badge>
+                </div>
+              </div>
+              <div className="py-4">
+                <StatisticCard13 />
               </div>
             </div>
-            <div className="py-4">
-              <StatisticCard13 />
+          </div>
+          <div className=" p-6 col-span-2 border-1  items-center flex flex-row justify-between">
+            <div className="">
+              <span className="text-xl">Uptime</span>
+              <div className="flex flex-row gap-8 justify-between">
+                <h1 className="pb-1">Uptime across all the regions</h1>
+                <div className="flex flex-row gap-2">
+                  <Badge className="bg-green-100 rounded-none">
+                    <p className=" text-green-700">Ok</p>
+                  </Badge>
+                  <Badge className="bg-yellow-100 rounded-none">
+                    <p className="text-yellow-700">Error</p>
+                  </Badge>
+                  <Badge className="bg-red-100 rounded-none">
+                    <p className="text-red-700">Degraded</p>
+                  </Badge>
+                </div>
+              </div>
+              <div className="py-4">
+                <StatisticCard13 />
+              </div>
             </div>
           </div>
         </div>
-        <div className=" p-6 col-span-2 border-1  items-center flex flex-row justify-between">
-          <div className="">
-            <span className="text-xl">Uptime</span>
-            <div className="flex flex-row gap-8 justify-between">
-              <h1 className="pb-1">Uptime across all the regions</h1>
-              <div className="flex flex-row gap-2">
-                <Badge className="bg-green-100 rounded-none">
-                  <p className=" text-green-700">Ok</p>
-                </Badge>
-                <Badge className="bg-yellow-100 rounded-none">
-                  <p className="text-yellow-700">Error</p>
-                </Badge>
-                <Badge className="bg-red-100 rounded-none">
-                  <p className="text-red-700">Degraded</p>
-                </Badge>
-              </div>
-            </div>
-            <div className="py-4">
-              <StatisticCard13 />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="py-6">
-        <h1 className="font-semibold py-6 px-6">All System Alerts</h1>
-        <div className="rounded-none border">
-          {/* <div className="mb-8 px-4 py-2 bg-secondary rounded-md">
+        <div className="py-6">
+          <h1 className="font-semibold py-6 px-6">All System Alerts</h1>
+          <div className="rounded-none border">
+            {/* <div className="mb-8 px-4 py-2 bg-secondary rounded-md">
             <h1 className="font-semibold">All System Alerts</h1>
           </div> */}
-          {/* <DataTable columns={columns} data={data} /> */}
-          <TableData />
+            {/* <DataTable columns={columns} data={data} /> */}
+            <TableData />
+          </div>
         </div>
       </div>
     </>
