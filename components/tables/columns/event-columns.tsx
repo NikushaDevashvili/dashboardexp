@@ -64,7 +64,7 @@ export const createEventColumns = ({
               : "bg-green-100 text-green-800"
           }
         >
-          {type}
+          {type.replace("_", " ")}
         </Badge>
       );
     },
