@@ -1,7 +1,7 @@
 import StatisticCard from "@/components/StatisticsCard";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { MousePointerClick } from "lucide-react";
+import { BotIcon, MousePointerClick, User } from "lucide-react";
 import { UsersIcon } from "lucide-react";
 import { MessageSquareTextIcon } from "lucide-react";
 
@@ -48,9 +48,124 @@ export default function EventPage() {
               <Badge variant="outline">gemini-2.0-flash-lite</Badge>
             </div>
           </div>
-          <div className="p-4 border bg-accent-foreground">
-            <p className="text-sm">1:48 PM, Sep 23 2025</p>
-            <Separator />
+          <div className="pt-4 flex flex-col gap-4">
+            {/* ONE EVENT */}
+
+            <div className="p-4 border bg-accent">
+              <p className="text-sm pb-3">1:48 PM, Sep 23 2025</p>
+              <Separator />
+              {/* CHAT USER MESSAGE */}
+              <div className="pt-3 flex flex-col gap-4">
+                <div className="flex flex-row gap-2">
+                  <div className="border-1 p-4 ">
+                    <User />
+                  </div>
+                  <div className="flex flex-col">
+                    <p className="text-sm text-gray-400">User</p>
+                    <p className="text-md">
+                      {" "}
+                      We’re struggling to keep employee onboarding organized—too
+                      many emails, docs, and tasks get lost.
+                    </p>
+                  </div>
+                </div>
+                <Separator />
+                {/* CHAT ASSISTANT MESSAGE */}
+                <div className="flex flex-row gap-2">
+                  <div className="border-1 p-4 ">
+                    <BotIcon />
+                  </div>
+                  <div className="flex flex-col">
+                    <p className="text-sm text-gray-400">Assistant</p>
+                    <p className="text-md">
+                      {" "}
+                      You’re not alone! With our HR platform, onboarding is
+                      fully automated: contracts sent for e-signature, IT tasks
+                      assigned, welcome kits tracked—all in one dashboard.
+                      Nothing slips through.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* SECOND EVENT */}
+
+            <div className="p-4 border bg-accent">
+              <p className="text-sm pb-3">1:48 PM, Sep 23 2025</p>
+              <Separator />
+              {/* CHAT USER MESSAGE */}
+              <div className="pt-3 flex flex-col gap-4">
+                <div className="flex flex-row gap-2">
+                  <div className="border-1 p-4 ">
+                    <User />
+                  </div>
+                  <div className="flex flex-col">
+                    <p className="text-sm text-gray-400">User</p>
+                    <p className="text-md">
+                      {" "}
+                      We’re struggling to keep employee onboarding organized—too
+                      many emails, docs, and tasks get lost.
+                    </p>
+                  </div>
+                </div>
+                <Separator />
+                {/* CHAT ASSISTANT MESSAGE */}
+                <div className="flex flex-row gap-2">
+                  <div className="border-1 p-4 ">
+                    <BotIcon />
+                  </div>
+                  <div className="flex flex-col">
+                    <p className="text-sm text-gray-400">Assistant</p>
+                    <p className="text-md">
+                      {" "}
+                      You’re not alone! With our HR platform, onboarding is
+                      fully automated: contracts sent for e-signature, IT tasks
+                      assigned, welcome kits tracked—all in one dashboard.
+                      Nothing slips through.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* SECOND EVENT */}
+
+            <div className="p-4 border bg-accent">
+              <p className="text-sm pb-3">1:48 PM, Sep 23 2025</p>
+              <Separator />
+              {/* CHAT USER MESSAGE */}
+              <div className="pt-3 flex flex-col gap-4">
+                <div className="flex flex-row gap-2">
+                  <div className="border-1 p-4 ">
+                    <User />
+                  </div>
+                  <div className="flex flex-col">
+                    <p className="text-sm text-gray-400">User</p>
+                    <p className="text-md">
+                      {" "}
+                      We’re struggling to keep employee onboarding organized—too
+                      many emails, docs, and tasks get lost.
+                    </p>
+                  </div>
+                </div>
+                <Separator />
+                {/* CHAT ASSISTANT MESSAGE */}
+                <div className="flex flex-row gap-2">
+                  <div className="border-1 p-4 ">
+                    <BotIcon />
+                  </div>
+                  <div className="flex flex-col">
+                    <p className="text-sm text-gray-400">Assistant</p>
+                    <p className="text-md">
+                      {" "}
+                      You’re not alone! With our HR platform, onboarding is
+                      fully automated: contracts sent for e-signature, IT tasks
+                      assigned, welcome kits tracked—all in one dashboard.
+                      Nothing slips through.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
