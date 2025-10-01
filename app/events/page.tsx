@@ -79,13 +79,18 @@ export default function EventsPage() {
       </div>
 
       <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
-        <SheetContent className="!w-[1200px] max-w-[1200px]">
+        <SheetContent className="min-w-[600px]">
           <SheetHeader>
             <div className="flex flex-row justify-between">
               {" "}
-              <SheetTitle>Event Details</SheetTitle>
-              <p className="text-sm">chat_1758621645089_i5l3xqtvb</p>
-              <div className="px-8">
+              <div className="flex flex-row gap-2 items-center">
+                {" "}
+                <SheetTitle>Event Details</SheetTitle>
+                <p className="text-sm text-gray-500">
+                  chat_1758621645089_i5l3xqtvb
+                </p>
+              </div>
+              <div className="flex gap-2 px-8">
                 <Button variant="outline" className="">
                   <DownloadIcon />
                 </Button>
