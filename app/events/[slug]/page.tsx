@@ -1,9 +1,85 @@
+import ChatThread from "@/components/events/ChatThread";
 import StatisticCard from "@/components/StatisticsCard";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { BotIcon, MousePointerClick, User } from "lucide-react";
 import { UsersIcon } from "lucide-react";
 import { MessageSquareTextIcon } from "lucide-react";
+
+const models = [
+  "gpt-4o",
+  "claude-3-5-sonnet",
+  "gemini-2.0-flash",
+  "gemini-2.0-flash-lite",
+];
+
+const turns = [
+  {
+    timestamp: "1:48 PM, Sep 23 2025",
+    messages: [
+      {
+        role: "user",
+        text: "We’re struggling to keep employee onboarding organized—too many emails, docs, and tasks get lost.",
+      },
+      {
+        role: "assistant",
+        text: "You’re not alone! With our HR platform, onboarding is fully automated: contracts sent, IT tasks assigned, welcome kits tracked—all in one dashboard.",
+      },
+    ],
+  },
+  {
+    timestamp: "2:10 PM, Sep 23 2025",
+    messages: [
+      {
+        role: "user",
+        text: "Can we customize the onboarding steps by department?",
+      },
+      {
+        role: "assistant",
+        text: "Yes. You can define templates per department and auto-assign tasks.",
+      },
+    ],
+  },
+  {
+    timestamp: "2:10 PM, Sep 23 2025",
+    messages: [
+      {
+        role: "user",
+        text: "Can we customize the onboarding steps by department?",
+      },
+      {
+        role: "assistant",
+        text: "Yes. You can define templates per department and auto-assign tasks.",
+      },
+    ],
+  },
+  {
+    timestamp: "2:10 PM, Sep 23 2025",
+    messages: [
+      {
+        role: "user",
+        text: "Can we customize the onboarding steps by department?",
+      },
+      {
+        role: "assistant",
+        text: "Yes. You can define templates per department and auto-assign tasks.",
+      },
+    ],
+  },
+  {
+    timestamp: "2:10 PM, Sep 23 2025",
+    messages: [
+      {
+        role: "user",
+        text: "Can we customize the onboarding steps by department?",
+      },
+      {
+        role: "assistant",
+        text: "Yes. You can define templates per department and auto-assign tasks.",
+      },
+    ],
+  },
+];
 
 export default function EventPage() {
   return (
@@ -36,132 +112,25 @@ export default function EventPage() {
             icon={<MessageSquareTextIcon />}
           />
         </div>
-        <div className="p-4 border">
-          <h1 className="text-md font-semibold pb-1">Chat Messages</h1>
-          <div className="flex flex-row gap-2">
-            {" "}
-            <p className="text-sm">Models Used: </p>
-            <div className="gap-1 flex">
-              <Badge variant="outline">gpt-4o</Badge>
-              <Badge variant="outline">claude-3-5-sonnet</Badge>
-              <Badge variant="outline">gemini-2.0-flash</Badge>
-              <Badge variant="outline">gemini-2.0-flash-lite</Badge>
+        <div className="mt-4 grid grid-cols-2">
+          <ChatThread models={models} turns={turns} />
+          <div className="p-4 border">
+            <div className="flex flex-row gap-2 items-center">
+              <h1 className="text-md font-semibold">EVENT DETAILS</h1>
+              <p className="text-sm text-gray-500">
+                chat_1758620893323_nom22e1ah
+              </p>
             </div>
-          </div>
-          <div className="pt-4 flex flex-col gap-4">
-            {/* ONE EVENT */}
-
-            <div className="p-4 border bg-accent">
-              <p className="text-sm pb-3">1:48 PM, Sep 23 2025</p>
-              <Separator />
-              {/* CHAT USER MESSAGE */}
-              <div className="pt-3 flex flex-col gap-4">
-                <div className="flex flex-row gap-2">
-                  <div className="border-1 p-4 ">
-                    <User />
+            <div className="pt-4">
+              <div className="border p-4">
+                <div className="flex flex-row gap-24">
+                  <div className="">
+                    <p>USER</p>
+                    <h1>Analytics event: user_typing</h1>
                   </div>
-                  <div className="flex flex-col">
-                    <p className="text-sm text-gray-400">User</p>
-                    <p className="text-md">
-                      {" "}
-                      We’re struggling to keep employee onboarding organized—too
-                      many emails, docs, and tasks get lost.
-                    </p>
-                  </div>
-                </div>
-                <Separator />
-                {/* CHAT ASSISTANT MESSAGE */}
-                <div className="flex flex-row gap-2">
-                  <div className="border-1 p-4 ">
-                    <BotIcon />
-                  </div>
-                  <div className="flex flex-col">
-                    <p className="text-sm text-gray-400">Assistant</p>
-                    <p className="text-md">
-                      {" "}
-                      You’re not alone! With our HR platform, onboarding is
-                      fully automated: contracts sent for e-signature, IT tasks
-                      assigned, welcome kits tracked—all in one dashboard.
-                      Nothing slips through.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* SECOND EVENT */}
-
-            <div className="p-4 border bg-accent">
-              <p className="text-sm pb-3">1:48 PM, Sep 23 2025</p>
-              <Separator />
-              {/* CHAT USER MESSAGE */}
-              <div className="pt-3 flex flex-col gap-4">
-                <div className="flex flex-row gap-2">
-                  <div className="border-1 p-4 ">
-                    <User />
-                  </div>
-                  <div className="flex flex-col">
-                    <p className="text-sm text-gray-400">User</p>
-                    <p className="text-md">
-                      {" "}
-                      We’re struggling to keep employee onboarding organized—too
-                      many emails, docs, and tasks get lost.
-                    </p>
-                  </div>
-                </div>
-                <Separator />
-                {/* CHAT ASSISTANT MESSAGE */}
-                <div className="flex flex-row gap-2">
-                  <div className="border-1 p-4 ">
-                    <BotIcon />
-                  </div>
-                  <div className="flex flex-col">
-                    <p className="text-sm text-gray-400">Assistant</p>
-                    <p className="text-md">
-                      {" "}
-                      You’re not alone! With our HR platform, onboarding is
-                      fully automated: contracts sent for e-signature, IT tasks
-                      assigned, welcome kits tracked—all in one dashboard.
-                      Nothing slips through.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* SECOND EVENT */}
-
-            <div className="p-4 border bg-accent">
-              <p className="text-sm pb-3">1:48 PM, Sep 23 2025</p>
-              <Separator />
-              {/* CHAT USER MESSAGE */}
-              <div className="pt-3 flex flex-col gap-4">
-                <div className="flex flex-row gap-2">
-                  <div className="border-1 p-4 ">
-                    <User />
-                  </div>
-                  <div className="flex flex-col">
-                    <p className="text-sm text-gray-400">User</p>
-                    <p className="text-md">
-                      {" "}
-                      We’re struggling to keep employee onboarding organized—too
-                      many emails, docs, and tasks get lost.
-                    </p>
-                  </div>
-                </div>
-                <Separator />
-                {/* CHAT ASSISTANT MESSAGE */}
-                <div className="flex flex-row gap-2">
-                  <div className="border-1 p-4 ">
-                    <BotIcon />
-                  </div>
-                  <div className="flex flex-col">
-                    <p className="text-sm text-gray-400">Assistant</p>
-                    <p className="text-md">
-                      {" "}
-                      You’re not alone! With our HR platform, onboarding is
-                      fully automated: contracts sent for e-signature, IT tasks
-                      assigned, welcome kits tracked—all in one dashboard.
-                      Nothing slips through.
-                    </p>
+                  <div className="">
+                    <p>USER</p>
+                    <h1>Analytics event: user_typing</h1>
                   </div>
                 </div>
               </div>
